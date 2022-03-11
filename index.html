@@ -20,17 +20,64 @@
 
   button {
     border-radius: 200px;
-    color:#fff;
-    -webkit-animation:Background 5s infinite alternate;
+    color: #fff;
+    -webkit-animation: Background 5s infinite alternate;
+  }
+
+  #countdown {
+    -webkit-animation: Color 5s infinite alternate;
+  }
+
+  @-webkit-keyframes Color {
+    0% {
+      color: crimson;
+    }
+
+    20% {
+      color: orange;
+    }
+
+    40% {
+      color: goldenrod;
+    }
+
+    60% {
+      color: green;
+    }
+
+    80% {
+      color: DarkBlue;
+    }
+
+    100% {
+      color: purple
+    }
   }
 
   @-webkit-keyframes Background {
-    0% {background-color: crimson;}
-    20% {background-color: orange;}
-    40% {background-color: goldenrod;}
-    60% {background-color: green;}
-    80% {background-color: DarkBlue;}
-    100% {background-color: purple}
+    0% {
+      background-color: crimson;
+    }
+
+    20% {
+      background-color: orange;
+    }
+
+    40% {
+      background-color: goldenrod;
+    }
+
+    60% {
+      background-color: green;
+    }
+
+    80% {
+      background-color: DarkBlue;
+    }
+
+    100% {
+      background-color: purple
+    }
   }
 </style>
 <script>
@@ -38,12 +85,35 @@
     window.location.href = "https://www.talloaks.band";
   }
 
-  const button = document.querySelector("button");
-  const FPS = 60;
+  // Set the date we're counting down to
+  var countDownDate = new Date("Mar 11, 2022 16:14:00").getTime();
 
-  setInterval(() => {
-    logo.style.color = randomColor();
+  // Update the count down every 1 second
+  var x = setInterval(function () {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for hours, minutes and seconds
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="demo"
+    document.getElementById("countdown").innerHTML = "Stream starts in:<br/>" + hours + "h "
+      + minutes + "m " + seconds + "s ";
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("countdown").innerHTML = "";
+    }
   }, 1000);
+
+
 </script>
 <html>
 
@@ -51,6 +121,7 @@
   <div>THE UNOFFICAL LIVESTREAM OF TALLOAKS - THE BAND</div>
   <!-- Add a placeholder for the Twitch embed -->
   <div style="text-align: center;">
+    <p style="font-size: 75px;" id="countdown"></p>
     <div id="twitch-embed"></div>
     <br />
     <button id="button" onclick="redirect()">
