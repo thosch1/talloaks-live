@@ -28,6 +28,40 @@
     -webkit-animation: Color 5s infinite alternate;
   }
 
+  #twitch {
+    border: 10px solid black;
+    border-radius: 10px;
+    height: 480px;
+    width: 855px;
+    -webkit-animation: Border 5s infinite alternate;
+  }
+
+  @-webkit-keyframes Border {
+    0% {
+      border-color: crimson;
+    }
+
+    20% {
+      border-color: orange;
+    }
+
+    40% {
+      border-color: goldenrod;
+    }
+
+    60% {
+      border-color: green;
+    }
+
+    80% {
+      border-color: DarkBlue;
+    }
+
+    100% {
+      border-color: purple
+    }
+  }
+
   @-webkit-keyframes Color {
     0% {
       color: crimson;
@@ -120,9 +154,13 @@
 <body>
   <div>THE UNOFFICAL LIVESTREAM OF TALLOAKS - THE BAND</div>
   <!-- Add a placeholder for the Twitch embed -->
-  <div style="text-align: center;">
+  <div style="align-items: center; text-align: center;">
     <p style="font-size: 75px;" id="countdown"></p>
-    <div id="twitch-embed"></div>
+    <div style="flex: 1; align-items: center; text-align: center;">
+      <div id="twitch" style="margin: 0 auto; align-items: center; text-align: center;">
+        <div id="twitch-embed"></div>
+      </div>
+    </div>
     <br />
     <button id="button" onclick="redirect()">
       <p>Continue to main site...</p>
